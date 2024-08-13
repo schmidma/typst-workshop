@@ -1,4 +1,6 @@
 #import "@preview/touying:0.4.2": *
+#import "@preview/cetz:0.2.2"
+#import "@preview/unify:0.6.0": num,qty,numrange,qtyrange
 
 #let s = themes.metropolis.register(
   aspect-ratio: "16-9"
@@ -530,12 +532,144 @@ and then use
 
 == ... and so much more
 
-- Tables
-- Code blocks
-- Symbols
-- Shapes
-- Drawings
-- ...
+#grid(
+  columns: (1fr, 1fr),
+  [
+    === Tables
+    #block(inset: (left:1em))[
+      #set text(size: 14pt)
+    #table(
+      columns: (auto, auto, auto),
+      inset: 10pt,
+      align: horizon,
+      table.header(
+        [], [*Area*], [*Parameters*],
+      ),
+      [🚗],
+      $ pi h (D^2 - d^2) / 4 $,
+      [
+        #set align(center)
+        $h$, $D$, $d$
+      ],
+    )]
+    === Code blocks
+    #block(inset: (left:1em))[
+    ```python
+    def f(x):
+      return x**2
+    ```
+    ]
+    === Units
+    #block(inset: (left:1em))[
+    $qty("1.3+1.2-0.3e3", "erg/cm^2/s", space: "#h(2mm)")$
+    ]
+    === Symbols
+    #block(inset: (left:1em))[
+    🖂 #sym.arrow.r #sym.gt.eq #emoji.face.halo
+    ]
+  ],
+  [
+    === Drawings
+
+    #block(inset: (left:1em))[
+    #set text(size: 10pt)
+    #cetz.canvas(length: 3cm, {
+      import cetz.draw: *
+      scale(x: 0.5, y: 0.5)
+
+      set-style(
+        mark: (fill: black, scale: 2),
+        stroke: (thickness: 0.4pt, cap: "round"),
+        angle: (
+          radius: 0.3,
+          label-radius: .22,
+          fill: green.lighten(80%),
+          stroke: (paint: green.darken(50%))
+        ),
+        content: (padding: 1pt)
+      )
+
+      grid((-1.5, -1.5), (1.4, 1.4), step: 0.5, stroke: gray + 0.2pt)
+
+      circle((0,0), radius: 1)
+
+      line((-1.5, 0), (1.5, 0), mark: (end: "stealth"))
+      content((), $ x $, anchor: "west")
+      line((0, -1.5), (0, 1.5), mark: (end: "stealth"))
+      content((), $ y $, anchor: "south")
+
+      for (x, ct) in ((-1, $ -1 $), (-0.5, $ -1/2 $), (1, $ 1 $)) {
+        line((x, 3pt), (x, -3pt))
+        content((), anchor: "north", ct)
+      }
+
+      for (y, ct) in ((-1, $ -1 $), (-0.5, $ -1/2 $), (0.5, $ 1/2 $), (1, $ 1 $)) {
+        line((3pt, y), (-3pt, y))
+        content((), anchor: "east", ct)
+      }
+
+      // Draw the green angle
+      cetz.angle.angle((0,0), (1,0), (1, calc.tan(30deg)),
+        label: text(green, [#sym.alpha]))
+
+      line((0,0), (1, calc.tan(30deg)))
+
+      set-style(stroke: (thickness: 1.2pt))
+
+      line((30deg, 1), ((), "|-", (0,0)), stroke: (paint: red), name: "sin")
+      content(("sin.start", 50%, "sin.end"), text(red)[$ sin alpha $])
+      line("sin.end", (0,0), stroke: (paint: blue), name: "cos")
+      content(("cos.start", 50%, "cos.end"), text(blue)[$ cos alpha $], anchor: "north")
+      line((1, 0), (1, calc.tan(30deg)), name: "tan", stroke: (paint: orange))
+      content("tan.end", $ text(#orange, tan alpha) = text(#red, sin alpha) / text(#blue, cos alpha) $, anchor: "west")
+    })
+    ]
+
+    === Plots
+    #block(inset: (left:1em))[
+    #cetz.canvas({
+      import cetz.draw: *
+
+      // Set up the transformation matrix
+      set-transform(cetz.matrix.transform-rotate-dir((1, 1, -1.3), (0, 1, .3)))
+      scale(x: 1, z: -0.666)
+
+      grid((0,-2), (8,2), stroke: gray + .5pt)
+
+      // Draw a sine wave on the xy plane
+      let wave(amplitude: 1, fill: none, phases: 2, scale: 8, samples: 100) = {
+        line(..(for x in range(0, samples + 1) {
+          let x = x / samples
+          let p = (2 * phases * calc.pi) * x
+          ((x * scale, calc.sin(p) * amplitude),)
+        }), fill: fill)
+
+        let subdivs = 8
+        for phase in range(0, phases) {
+          let x = phase / phases
+          for div in range(1, subdivs + 1) {
+            let p = 2 * calc.pi * (div / subdivs)
+            let y = calc.sin(p) * amplitude
+            let x = x * scale + div / subdivs * scale / phases
+            line((x, 0), (x, y), stroke: rgb(0, 0, 0, 150) + .5pt)
+          }
+        }
+      }
+
+      group({
+        rotate(x: 90deg)
+        wave(amplitude: 1.6, fill: rgb(0, 0, 255, 50))
+      })
+      wave(amplitude: 1, fill: rgb(255, 0, 0, 50))
+    })]
+  
+    === ...and much more
+  ],
+)
+
+#focus-slide[
+  Feedback, Questions, and Ideas for Improvement?
+]
 
 == Useful Links
 
@@ -546,6 +680,10 @@ https://typst.app/docs
 https://sitandr.github.io/typst-examples-book/book/
 
 https://typst.app/universe/
+
+https://discord.gg/2uDybryKPe
+
+https://github.com/qjcg/awesome-typst
 
 https://collaborating.tuhh.de/es/ce/public/tuhh-typst
 
