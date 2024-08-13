@@ -1,0 +1,27 @@
+smith2023modern:
+  type: book
+  title: Modern Approaches to Data Science
+  author: Smith, John
+  date: 2023
+  publisher: Tech Publishers
+  location: New York
+  edition: 2nd
+  serial-number:
+    isbn: 978-3-16-148410-0
+johnson2022ai:
+  type: article
+  title: 'The Impact of AI on Healthcare: A Comprehensive Review'
+  author:
+  - Johnson, Emily
+  - Lee, Robert
+  date: 2022
+  page-range: 245–267
+  url: https://doi.org/10.1016/j.jair.2022.03.002
+  serial-number:
+    doi: 10.1016/j.jair.2022.03.002
+  parent:
+    type: periodical
+    title: Journal of Artificial Intelligence Research
+    issue: 2
+    volume: 47
+

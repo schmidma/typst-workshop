@@ -504,7 +504,7 @@ and then use
   align(center, ```typst
   This is a citation to a paper by @johnson2022ai. Followed by a work of John Smith @smith2023modern.
 
-  #bibliography("literature.bib")
+  #bibliography("literature.yaml")
   ```),
   rect(
     fill: gray.lighten(50%),
@@ -517,7 +517,7 @@ and then use
       #set text(size: 12pt)
 
       This is a citation to a paper by @johnson2022ai. Followed by a work of John Smith @smith2023modern.
-      #bibliography("literature.bib")
+      #bibliography("literature.yaml")
     ]
   )
 )
