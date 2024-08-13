@@ -1,0 +1,19 @@
+name: Build Presentation
+on: push
+jobs:
+  build-presentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+      - name: Build PDF
+        run: typst compile presentation.typ presentation.pdf
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: *.pdf
+
+
