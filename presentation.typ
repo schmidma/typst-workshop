@@ -487,7 +487,7 @@ and then use
       Rivers as shown in @rivers are an important part of the earth's climate system.
 
       #figure(
-        image("./assets/lorem_picsum.jpg", width: 70%),
+        image("./assets/rivers.jpg", width: 70%),
         caption: [
           _River_ in a forest.
         ],
