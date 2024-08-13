@@ -2,6 +2,7 @@ name: Build Presentation
 on: push
 jobs:
   build-presentation:
+    name: Build & Upload Presentation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
