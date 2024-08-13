@@ -14,7 +14,6 @@
 #show: init
 
 #set text(font: "Hanken Grotesk", size: 20pt)
-// #show math.equation: set text(font: "Fira Math")
 #set strong(delta: 100)
 #set par(justify: true)
 #show strong: alert
@@ -63,13 +62,6 @@
   columns: (1.5fr, 2fr),
   [
     #set align(center)
-    // #place(
-    //   image("./assets/mdpi-large.png")
-    // )
-    // #place(
-    //   dx: 5em,
-    //   image("./assets/ieee-large.png")
-    // )
     #image("./assets/ieee-large.png")
   ],
   align(center,box[
@@ -118,7 +110,7 @@ LaTeX:
 
 #image("./assets/vscode.png")
 
-== Using the CLI
+== Using the Command Line Interface
 
 - Downloading the latest release from GitHub, and update with
 ```sh
@@ -307,7 +299,7 @@ and then use
   ))
 )
 
-== Maths
+== Mathematical Expressions
 
 #grid(
   columns: (1fr, 1fr),
@@ -329,7 +321,7 @@ and then use
   ))
 )
 
-== Maths
+== Mathematical Expressions
 
 #grid(
   columns: (1fr, 1fr),
