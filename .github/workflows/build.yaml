@@ -10,7 +10,7 @@ jobs:
       - name: Setup Typst
         uses: typst-community/setup-typst@v3
       - name: Build PDF
-        run: typst compile presentation.typ presentation.pdf
+        run: typst compile --font-path fonts/ presentation.typ presentation.pdf
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
