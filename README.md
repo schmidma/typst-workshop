@@ -27,6 +27,6 @@ Feel free to open an issue or submit a pull request.
 
 ## License
 
-This presentation is licensed under the MIT License.
+This presentation is marked with [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).
 
 Additionally, I'd like to extend my thanks to the awesome Typst documentation, which served as inspiration for many of the explanations provided in this workshop.
