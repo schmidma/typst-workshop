@@ -1,6 +1,7 @@
 #import "@preview/touying:0.4.2": *
 #import "@preview/cetz:0.2.2"
 #import "@preview/unify:0.6.0": num,qty,numrange,qtyrange
+#import "@preview/ccicons:1.0.0": *
 
 #let s = themes.metropolis.register(
   aspect-ratio: "16-9"
@@ -8,7 +9,8 @@
 #let s = (s.methods.info)(
   self: s,
   title: [Typst],
-  subtitle: [The Modern Alternative to LaTeX],
+  subtitle: [The Modern Alternative to LaTeX #cc #cc-zero],
+  author: [Maximilian Schmidt],
 )
 #let (init, slides, touying-outline, alert) = utils.methods(s)
 #show: init
@@ -144,10 +146,6 @@ and then use
 #align(center+bottom,
   image("./assets/typst-pro-transparent.png", height: 8em)
 )
-
-#focus-slide[
-  Questions?
-]
 
 #focus-slide[
   #set text(size: 50pt)
@@ -659,10 +657,6 @@ and then use
   ],
 )
 
-#focus-slide[
-  Feedback, Questions, and Ideas for Improvement?
-]
-
 == Useful Links
 
 https://typst.app
@@ -682,3 +676,7 @@ https://collaborating.tuhh.de/es/ce/public/tuhh-typst
 https://collaborating.tuhh.de/es/ce/public/templatesforreports
 
 https://collaborating.tuhh.de/es/ce/public/ies-typst-phd-thesis-template
+
+#focus-slide[
+  Feedback, Questions, and Ideas for Improvement?
+]
