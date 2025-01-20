@@ -43,8 +43,8 @@
     [
       #set align(left)
       - /taɪpst/ i.e. 'Ty' like in Typesetting
-      - alternative to LaTex, Word, or Google Docs
-      - build to be a pleasure to use
+      - alternative to LaTeX, Word, or Google Docs
+      - built to be a pleasure to use
       - powerful and easy to learn
       - blazingly fast compile times
       - free and Open Source (Apache 2.0)
@@ -71,6 +71,7 @@
           - theses
           - articles
           - books
+          - presentations
           - ...
         - takes text files and outputs PDFs
       ],
@@ -111,7 +112,7 @@
 ]
 
 #slide(title: [Using the Command Line Interface])[
-  - Downloading the latest release from GitHub, and update with
+  - Download the latest release from GitHub, and update with
   ```sh
         typst update
   ```
@@ -121,7 +122,7 @@
         brew install typst
   ```
 
-  - With Rust a toolchain:
+  - With a Rust toolchain:
   ```sh
         cargo install --locked typst-cli
   ```
@@ -248,7 +249,7 @@
       center,
       ```typst
       You can break \
-      line anywhere you \
+      lines anywhere you \
       want using the \\ symbol.
       ```,
     ),
@@ -261,7 +262,7 @@
         inset: 0.4em,
       )[
         You can break \
-        line anywhere you \
+        lines anywhere you \
         want using the \\ symbol.
       ],
     ),
