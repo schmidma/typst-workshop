@@ -1,5 +1,5 @@
 #import "@preview/touying:0.4.2": *
-#import "@preview/cetz:0.2.2"
+#import "@preview/cetz:0.3.1"
 #import "@preview/unify:0.6.0": num, qty, numrange, qtyrange
 #import "@preview/ccicons:1.0.0": *
 
