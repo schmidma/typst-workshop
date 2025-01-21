@@ -37,7 +37,7 @@
       rect(
         fill: white,
         inset: 7.5mm,
-        show-output(eval(code.text, mode: "markup"))
+        show-output(eval(code.text, mode: "markup")),
       ),
     ),
   )
@@ -196,142 +196,120 @@
 #new-section-slide[Typst Basics]
 
 #slide(title: [Typst Basics])[
-  #example(
-    ```typ
-    When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
-    ```,
-  )
+  #example(```typ
+  When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
+  ```)
 ]
 
 #slide(title: [Headers])[
-  #example(
-    ```typ
-    = Introduction
-    When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
-    ```
-  )
+  #example(```typ
+  = Introduction
+  When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
+  ```)
 ]
 
 #slide(title: [Markup])[
-  #example(
-    ```typ
-    Okay, let's move to _emphasis_ and *bold* text.
-    Markup syntax is generally similar to `AsciiDoc` (this was `raw` for monospace text!)
+  #example(```typ
+  Okay, let's move to _emphasis_ and *bold* text.
+  Markup syntax is generally similar to `AsciiDoc` (this was `raw` for monospace text!)
 
-    ... and even "smart quotes" :)
-    ```,
-  )
+  ... and even "smart quotes" :)
+  ```)
 ]
 
 #slide(title: [Newlines])[
-  #example(
-    ```typ
-    You can break \
-    lines anywhere you \
-    want using the \\ symbol.
-    ```,
-  )
+  #example(```typ
+  You can break \
+  lines anywhere you \
+  want using the \\ symbol.
+  ```)
 ]
 
 #slide(title: [Lists])[
-  #example(
-    ```typ
-    + First
-    + Second
-    + Third
+  #example(```typ
+  + First
+  + Second
+  + Third
 
-    - First
-      - First indented
-    - Second
-    - Third
-      - Third indented
-        - even more
-    ```
-  )
+  - First
+    - First indented
+  - Second
+  - Third
+    - Third indented
+      - even more
+  ```)
 ]
 
 #slide(title: [Mathematical Expressions])[
-  #example(
-    ```typ
-    $Q = rho A v + C / 2$
-    ```
-  )
+  #example(```typ
+  $Q = rho A v + C / 2$
+  ```)
 ]
 
 #slide(title: [Mathematical Expressions])[
-  #example(
-    ```typ
-    $
-      7.32 beta +
-      sum_(i=0)^nabla
-        (Q_i (a_i - epsilon)) / 2
-    $
-    ```
-  )
+  #example(```typ
+  $
+    7.32 beta +
+    sum_(i=0)^nabla
+      (Q_i (a_i - epsilon)) / 2
+  $
+  ```)
 ]
 
 #new-section-slide[Typst Advanced]
 
 #slide(title: [Functions])[
-  #example(
-    ```typ
-    To go to scripting mode, type `#` and *some function name* after that. We will start with _something dull_:
+  #example(```typ
+  To go to scripting mode, type `#` and *some function name* after that. We will start with _something dull_:
 
-    #lorem(5)
-    ```
-  )
+  #lorem(5)
+  ```)
 ]
 
 #slide(title: [Content])[
-  #example(
-    ```typ
-    The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
+  #example(```typ
+  The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
 
-    #[
-      But you can explicitly create it
-      with _scripting mode_.
+  #[
+    But you can explicitly create it
+    with _scripting mode_.
 
-      In square brackets, you can use
-      any markup functions.
-    ]
-    ```
-  )
+    In square brackets, you can use
+    any markup functions.
+  ]
+  ```)
 ]
 
 #slide(title: [Arguments])[
-  #example(
-    ```typ
-    You find the documentation in the #link("https://typst.app/docs/reference/", [Official Reference]).
+  #example(```typ
+  You find the documentation in the #link("https://typst.app/docs/reference/", [Official Reference]).
 
-    #quote(
-      block: true,
-      attribution: "Typst Examples Book",
-      [
-      That's right, links, quotes and
-      lots of other document elements are
-      created with functions.
-      ]
-    )
-    ```
+  #quote(
+    block: true,
+    attribution: "Typst Examples Book",
+    [
+    That's right, links, quotes and
+    lots of other document elements are
+    created with functions.
+    ]
   )
+  ```)
 ]
 
 #slide(title: [Figures, Captions, and References])[
-  #example(
-    ```typ
-    Rivers as shown in @rivers are an important part of the earth's climate system.
+  #example(```typ
+  Rivers as shown in @rivers are an important part of the earth's climate system.
 
-    #figure(
-     image(
-       "./assets/rivers.jpg",
-       width: 70%
-     ),
-     caption: [
-      _River_ in a forest.
-     ],
-    ) <rivers>
-    ```
-  )
+  #figure(
+   image(
+     "./assets/rivers.jpg",
+     width: 70%
+   ),
+   caption: [
+    _River_ in a forest.
+   ],
+  ) <rivers>
+  ```)
 ]
 
 #slide(title: [Bibliography])[
@@ -344,7 +322,7 @@
     This is a citation to a paper by @johnson2022ai. Followed by a work of John Smith @smith2023modern.
 
     #bibliography("literature.yaml")
-    ```
+    ```,
   )
 ]
 
