@@ -5,7 +5,16 @@
 
 #import themes.metropolis: *
 
-#show: metropolis-theme
+#show: metropolis-theme.with(footer: context {
+  let current-page = here().page()
+  let content = query(<custom-footnote>).filter(it => it.location().page() == current-page).map(md => md.value).join([\n])
+
+  content
+})
+
+#let custom-footnote(it) = [
+  #metadata(it) <custom-footnote>
+]
 
 #set text(font: "Hanken Grotesk", size: 20pt)
 
