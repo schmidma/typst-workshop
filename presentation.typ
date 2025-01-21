@@ -8,12 +8,11 @@
 #show: metropolis-theme.with(
   footer: context {
     let current-page = here().page()
-    let content = query(<custom-footnote>)
+    set text(size: 12pt)
+    query(<custom-footnote>)
       .filter(it => it.location().page() == current-page)
       .map(md => md.value)
       .join([\n])
-
-    content
   },
 )
 
@@ -81,12 +80,15 @@
     gutter: 2em,
     align(
       center + horizon,
-      block(
-        clip: true,
-        radius: 10pt,
-        width: 7em,
-        image("./assets/typst_logo.png"),
-      ),
+      {
+        block(
+          clip: true,
+          radius: 10pt,
+          width: 7em,
+          image("./assets/typst_logo.png"),
+        )
+        custom-footnote[Logo: https://avatars.githubusercontent.com/u/67595261?s=200&v=4]
+      },
     ),
     [
       #set align(left)
@@ -103,10 +105,19 @@
 #slide(title: [When to use Typst?])[
   #grid(
     columns: (1.5fr, 2fr),
-    [
-      #set align(center)
-      #image("./assets/towards-swifter-interstellar-mail-delivery.png")
-    ],
+    align(
+      center,
+      {
+        place(
+          center + horizon,
+          image(
+            "./assets/towards-swifter-interstellar-mail-delivery_drop-shadowed.png",
+            height: 110%,
+          ),
+        )
+        custom-footnote[Image: https://typst.app/assets/images/ieee.webp]
+      },
+    ),
     align(
       center,
       box[
@@ -114,7 +125,6 @@
         - markup for typesetting documents
         - composing
           - papers
-          - essays
           - reports
           - theses
           - articles
@@ -148,7 +158,10 @@
 
 #slide(title: [Using the Web App])[
   #figure(
-    image("./assets/web-app.png"),
+    {
+      image("./assets/web-app.png")
+      custom-footnote[Image: https://typst.app/assets/videos/mockup.webm]
+    },
     supplement: none,
     caption: [https://typst.app],
   )
@@ -156,7 +169,8 @@
 
 #slide(title: [Using Tinymist in VSCode])[
   #set align(center)
-  #image("./assets/vscode.png", height: 125%)
+  #image("./assets/vscode.png", height: 120%)
+  #custom-footnote[Image: screenshot]
 ]
 
 #slide(title: [Using the Command Line Interface])[
@@ -183,15 +197,20 @@
 ]
 
 #slide(title: [How can it be free?])[
+  #v(0.5em)
+
   - it is Open Source, and it will stay that way
   - WebApp has subscription plans with additional features
   - typst on-premises: self-hosted version for organizations
   - commercial support contracts
 
+  #v(0.5em)
+
   #align(
     center + bottom,
     image("./assets/typst-pro-transparent.png", height: 8em),
   )
+  #custom-footnote[Image: screenshot of https://typst.app/pricing/]
 ]
 
 #focus-slide[
@@ -199,12 +218,43 @@
   Installation and Setup
 
   #set text(size: 20pt)
-  #block[
-    #set align(left)
-    - WebApp: Sign up and log in
-    - VSCode: Install the extension (Tinymist)
-    - CLI: Install the latest release
-  ]
+  #set align(top)
+  #show heading: set block(below: 1em)
+  #table(
+    columns: (2fr, 3fr),
+    inset: (x: 1.4em, y: 1em),
+    stroke: (x, y) => (
+      left: if x > 0 { 0.8pt + white },
+      top: if y > 0 { 0.8pt + white },
+    ),
+    [
+      == WebApp
+
+      + Sign up and Log in
+      + Create document
+
+      https://typst.app
+    ],
+    table.cell(
+      rowspan: 2,
+      [
+        == Local Installation
+
+        #set align(left)
+        Install the latest release:
+
+        - download binary from GitHub
+        - `brew install typst`
+        - `cargo install --locked typst-cli`
+        - `winget install --id Typst.Typst`
+      ],
+    ),
+    [
+      == VSCode
+
+      Install Extension: Tinymist
+    ],
+  )
 ]
 
 #new-section-slide[Typst Basics]
@@ -419,26 +469,52 @@
                 content((), anchor: "north", ct)
               }
 
-              for (y, ct) in ((-1, $ -1 $), (-0.5, $ -1 / 2 $), (0.5, $ 1 / 2 $), (1, $ 1 $)) {
+              for (y, ct) in (
+                (-1, $ -1 $),
+                (-0.5, $ -1 / 2 $),
+                (0.5, $ 1 / 2 $),
+                (1, $ 1 $),
+              ) {
                 line((3pt, y), (-3pt, y))
                 content((), anchor: "east", ct)
               }
 
               // Draw the green angle
-              cetz.angle.angle((0, 0), (1, 0), (1, calc.tan(30deg)), label: text(green, [#sym.alpha]))
+              cetz.angle.angle(
+                (0, 0),
+                (1, 0),
+                (1, calc.tan(30deg)),
+                label: text(green, [#sym.alpha]),
+              )
 
               line((0, 0), (1, calc.tan(30deg)))
 
               set-style(stroke: (thickness: 1.2pt))
 
-              line((30deg, 1), ((), "|-", (0, 0)), stroke: (paint: red), name: "sin")
+              line(
+                (30deg, 1),
+                ((), "|-", (0, 0)),
+                stroke: (paint: red),
+                name: "sin",
+              )
               content(("sin.start", 50%, "sin.end"), text(red)[$ sin alpha $])
               line("sin.end", (0, 0), stroke: (paint: blue), name: "cos")
-              content(("cos.start", 50%, "cos.end"), text(blue)[$ cos alpha $], anchor: "north")
-              line((1, 0), (1, calc.tan(30deg)), name: "tan", stroke: (paint: orange))
+              content(
+                ("cos.start", 50%, "cos.end"),
+                text(blue)[$ cos alpha $],
+                anchor: "north",
+              )
+              line(
+                (1, 0),
+                (1, calc.tan(30deg)),
+                name: "tan",
+                stroke: (paint: orange),
+              )
               content(
                 "tan.end",
-                $ text(#orange, tan alpha) = text(#red, sin alpha) / text(#blue, cos alpha) $,
+                $
+                  text(#orange, tan alpha) = text(#red, sin alpha) / text(#blue, cos alpha)
+                $,
                 anchor: "west",
               )
             },
@@ -451,13 +527,21 @@
             import cetz.draw: *
 
             // Set up the transformation matrix
-            set-transform(cetz.matrix.transform-rotate-dir((1, 1, -1.3), (0, 1, .3)))
+            set-transform(
+              cetz.matrix.transform-rotate-dir((1, 1, -1.3), (0, 1, .3)),
+            )
             scale(x: 1, z: -0.666)
 
             grid((0, -2), (8, 2), stroke: gray + .5pt)
 
             // Draw a sine wave on the xy plane
-            let wave(amplitude: 1, fill: none, phases: 2, scale: 8, samples: 100) = {
+            let wave(
+              amplitude: 1,
+              fill: none,
+              phases: 2,
+              scale: 8,
+              samples: 100,
+            ) = {
               line(
                 ..(
                   for x in range(0, samples + 1) {
