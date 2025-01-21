@@ -5,12 +5,17 @@
 
 #import themes.metropolis: *
 
-#show: metropolis-theme.with(footer: context {
-  let current-page = here().page()
-  let content = query(<custom-footnote>).filter(it => it.location().page() == current-page).map(md => md.value).join([\n])
+#show: metropolis-theme.with(
+  footer: context {
+    let current-page = here().page()
+    let content = query(<custom-footnote>)
+      .filter(it => it.location().page() == current-page)
+      .map(md => md.value)
+      .join([\n])
 
-  content
-})
+    content
+  },
+)
 
 #let custom-footnote(it) = [
   #metadata(it) <custom-footnote>
