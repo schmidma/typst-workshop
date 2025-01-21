@@ -9,6 +9,19 @@
 
 #set text(font: "Hanken Grotesk", size: 20pt)
 
+#let new-section-slide(name) = {
+  let content = {
+    utils.register-section(name)
+    set align(horizon)
+    show: pad.with(20%)
+    set text(size: 1.5em)
+    name
+    v(0.5em)
+    block(height: 2pt, width: 100%, spacing: 0pt, m-progress-bar)
+  }
+  logic.polylux-slide(content)
+}
+
 #title-slide(
   title: [Typst],
   subtitle: [The Modern Alternative to LaTeX #cc #cc-zero],
