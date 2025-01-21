@@ -22,6 +22,27 @@
   logic.polylux-slide(content)
 }
 
+#let identity(x) = x
+#let centered(it) = align(center, block(align(left, it)))
+#let example(code, columns: (1fr, 1fr), show-output: identity) = {
+  show grid.cell: centered
+  grid(
+    columns: columns,
+    gutter: 1em,
+    raw(lang: "typ", code.text),
+    rect(
+      fill: gray.lighten(50%),
+      radius: 2.5mm,
+      inset: 2.5mm,
+      rect(
+        fill: white,
+        inset: 7.5mm,
+        show-output(eval(code.text, mode: "markup"))
+      ),
+    ),
+  )
+}
+
 #title-slide(
   title: [Typst],
   subtitle: [The Modern Alternative to LaTeX #cc #cc-zero],
@@ -175,423 +196,155 @@
 #new-section-slide[Typst Basics]
 
 #slide(title: [Typst Basics])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
-      ```,
-    ),
-    rect(
-      fill: gray.lighten(50%),
-      radius: 5pt,
-      inset: 0.4em,
-      rect(
-        fill: white,
-        inset: 0.4em,
-      )[
-        When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
-      ],
-    ),
+  #example(
+    ```typ
+    When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
+    ```,
   )
 ]
 
 #slide(title: [Headers])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      = Introduction
-      When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
-      ```,
-    ),
-    rect(
-      fill: gray.lighten(50%),
-      radius: 5pt,
-      inset: 0.4em,
-      rect(
-        fill: white,
-        inset: 0.4em,
-      )[
-        = Introduction
-        When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
-      ],
-    ),
+  #example(
+    ```typ
+    = Introduction
+    When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
+    ```
   )
 ]
 
 #slide(title: [Markup])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      Okay, let's move to _emphasis_ and *bold* text.
-      Markup syntax is generally similar to `AsciiDoc` (this was `raw` for monospace text!)
+  #example(
+    ```typ
+    Okay, let's move to _emphasis_ and *bold* text.
+    Markup syntax is generally similar to `AsciiDoc` (this was `raw` for monospace text!)
 
-      ... and even "smart quotes" :)
-      ```,
-    ),
-    rect(
-      fill: gray.lighten(50%),
-      radius: 5pt,
-      inset: 0.4em,
-      rect(
-        fill: white,
-        inset: 0.4em,
-      )[
-        Okay, let's move to _emphasis_ and *bold* text.
-        Markup syntax is generally similar to `AsciiDoc` (this was `raw` for monospace text!)
-
-        ... and even "smart quotes" :)
-      ],
-    ),
+    ... and even "smart quotes" :)
+    ```,
   )
 ]
 
 #slide(title: [Newlines])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      You can break \
-      lines anywhere you \
-      want using the \\ symbol.
-      ```,
-    ),
-    rect(
-      fill: gray.lighten(50%),
-      radius: 5pt,
-      inset: 0.4em,
-      rect(
-        fill: white,
-        inset: 0.4em,
-      )[
-        You can break \
-        lines anywhere you \
-        want using the \\ symbol.
-      ],
-    ),
+  #example(
+    ```typ
+    You can break \
+    lines anywhere you \
+    want using the \\ symbol.
+    ```,
   )
 ]
 
 #slide(title: [Lists])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      + First
-      + Second
-      + Third
+  #example(
+    ```typ
+    + First
+    + Second
+    + Third
 
-      - First
-        - First indented
-      - Second
-      - Third
-        - Third indented
-          - even more
-      ```,
-    ),
-    align(
-      center,
-      rect(
-        fill: gray.lighten(50%),
-        radius: 5pt,
-        inset: 0.4em,
-        rect(
-          fill: white,
-          inset: 0.4em,
-        )[
-          #set align(left)
-          + First
-          + Second
-          + Third
-
-          #set list(indent: 0pt)
-          - First
-            - First indented
-          - Second
-          - Third
-            - Third indented
-              - even more
-        ],
-      ),
-    ),
+    - First
+      - First indented
+    - Second
+    - Third
+      - Third indented
+        - even more
+    ```
   )
 ]
 
 #slide(title: [Mathematical Expressions])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      $Q = rho A v + C / 2$
-      ```,
-    ),
-    align(
-      center,
-      rect(
-        fill: gray.lighten(50%),
-        radius: 5pt,
-        inset: 0.4em,
-        rect(
-          fill: white,
-          inset: 1em,
-        )[
-          #set align(left)
-          $Q = rho A v + C / 2$
-        ],
-      ),
-    ),
+  #example(
+    ```typ
+    $Q = rho A v + C / 2$
+    ```
   )
 ]
 
 #slide(title: [Mathematical Expressions])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      $
+  #example(
+    ```typ
+    $
       7.32 beta +
       sum_(i=0)^nabla
         (Q_i (a_i - epsilon)) / 2
-      $
-      ```,
-    ),
-    align(
-      center,
-      rect(
-        fill: gray.lighten(50%),
-        radius: 5pt,
-        inset: 0.4em,
-        rect(
-          fill: white,
-          inset: 1em,
-        )[
-          #set align(left)
-          $
-            7.32 beta +
-            sum_(i=0)^nabla
-            (Q_i (a_i - epsilon)) / 2
-          $
-        ],
-      ),
-    ),
+    $
+    ```
   )
 ]
 
 #new-section-slide[Typst Advanced]
 
 #slide(title: [Functions])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      To go to scripting mode, type `#` and *some function name* after that. We will start with _something dull_:
+  #example(
+    ```typ
+    To go to scripting mode, type `#` and *some function name* after that. We will start with _something dull_:
 
-      #lorem(5)
-      ```,
-    ),
-    align(
-      center,
-      rect(
-        fill: gray.lighten(50%),
-        radius: 5pt,
-        inset: 0.4em,
-        rect(
-          fill: white,
-          inset: 0.4em,
-        )[
-          #set align(left)
-          To go to scripting mode, type `#` and *some function name*
-          after that. We will start with _something dull_:
-
-          #lorem(5)
-        ],
-      ),
-    ),
+    #lorem(5)
+    ```
   )
 ]
 
 #slide(title: [Content])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
+  #example(
+    ```typ
+    The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
 
-      #[
-        But you can explicitly create it
-        with _scripting mode_.
+    #[
+      But you can explicitly create it
+      with _scripting mode_.
 
-        In square brackets, you can use
-        any markup functions.
-      ]
-      ```,
-    ),
-    align(
-      center,
-      rect(
-        fill: gray.lighten(50%),
-        radius: 5pt,
-        inset: 0.4em,
-        rect(
-          fill: white,
-          inset: 0.4em,
-        )[
-          #set align(left)
-          The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
-
-          #[
-            But you can explicitly create it
-            with _scripting mode_.
-
-            In square brackets, you can use
-            any markup functions.
-          ]
-        ],
-      ),
-    ),
+      In square brackets, you can use
+      any markup functions.
+    ]
+    ```
   )
 ]
 
 #slide(title: [Arguments])[
-  #grid(
-    columns: (1fr, 1fr),
-    // inset: 1em,
-    gutter: 1em,
-    align(
-      center,
-      ```typst
-      You find the documentation in the #link("https://typst.app/docs/reference/", [Official Reference]).
+  #example(
+    ```typ
+    You find the documentation in the #link("https://typst.app/docs/reference/", [Official Reference]).
 
-      #quote(
-        block: true,
-        attribution: "Typst Examples Book",
-        [
-        That's right, links, quotes and
-        lots of other document elements are
-        created with functions.
-        ]
-      )
-      ```,
-    ),
-    align(
-      center,
-      rect(
-        fill: gray.lighten(50%),
-        radius: 5pt,
-        inset: 0.4em,
-        rect(
-          fill: white,
-          inset: 0.4em,
-        )[
-          #set align(left)
-          You find the documentation in the #link("https://typst.app/docs/reference/")[Official Reference].
-
-          #quote(
-            block: true,
-            attribution: "Typst Examples Book",
-            [
-              That's right, links, quotes and lots of
-              other document elements are created with functions.
-            ],
-          )
-        ],
-      ),
-    ),
+    #quote(
+      block: true,
+      attribution: "Typst Examples Book",
+      [
+      That's right, links, quotes and
+      lots of other document elements are
+      created with functions.
+      ]
+    )
+    ```
   )
 ]
 
 #slide(title: [Figures, Captions, and References])[
-  #grid(
-    columns: (1fr, 1fr),
-    // inset: 1em,
-    gutter: 1em,
-    align(
-      center,
-      ```typst
-      Rivers as shown in @rivers are an important part of the earth's climate system.
+  #example(
+    ```typ
+    Rivers as shown in @rivers are an important part of the earth's climate system.
 
-      #figure(
-       image(
-         "./assets/rivers.jpg",
-         width: 70%
-       ),
-       caption: [
-        _River_ in a forest.
-       ],
-      ) <rivers>
-      ```,
-    ),
-    align(
-      center,
-      rect(
-        fill: gray.lighten(50%),
-        radius: 5pt,
-        inset: 0.4em,
-        rect(
-          fill: white,
-          inset: 0.4em,
-        )[
-          #set align(left)
-          Rivers as shown in @rivers are an important part of the earth's climate system.
-
-          #figure(
-            image("./assets/rivers.jpg", width: 70%),
-            caption: [
-              _River_ in a forest.
-            ],
-          ) <rivers>
-        ],
-      ),
-    ),
+    #figure(
+     image(
+       "./assets/rivers.jpg",
+       width: 70%
+     ),
+     caption: [
+      _River_ in a forest.
+     ],
+    ) <rivers>
+    ```
   )
 ]
 
 #slide(title: [Bibliography])[
-  #grid(
-    columns: (1fr, 1fr),
-    inset: 1em,
-    align(
-      center,
-      ```typst
-      This is a citation to a paper by @johnson2022ai. Followed by a work of John Smith @smith2023modern.
+  #example(
+    show-output: it => {
+      set text(size: 12pt)
+      it
+    },
+    ```typ
+    This is a citation to a paper by @johnson2022ai. Followed by a work of John Smith @smith2023modern.
 
-      #bibliography("literature.yaml")
-      ```,
-    ),
-    rect(
-      fill: gray.lighten(50%),
-      radius: 5pt,
-      inset: 0.4em,
-      rect(
-        fill: white,
-        inset: 0.4em,
-      )[
-        #set text(size: 12pt)
-
-        This is a citation to a paper by @johnson2022ai. Followed by a work of John Smith @smith2023modern.
-        #bibliography("literature.yaml")
-      ],
-    ),
+    #bibliography("literature.yaml")
+    ```
   )
 ]
 
