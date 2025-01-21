@@ -105,7 +105,7 @@
     columns: (1.5fr, 2fr),
     [
       #set align(center)
-      #image("./assets/ieee-large.png")
+      #image("./assets/towards-swifter-interstellar-mail-delivery.png")
     ],
     align(
       center,
