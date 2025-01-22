@@ -9,10 +9,7 @@
   footer: context {
     let current-page = here().page()
     set text(size: 12pt)
-    query(<custom-footnote>)
-      .filter(it => it.location().page() == current-page)
-      .map(md => md.value)
-      .join(linebreak())
+    query(<custom-footnote>).filter(it => it.location().page() == current-page).map(md => md.value).join(linebreak())
   },
 )
 
@@ -35,6 +32,15 @@
   logic.polylux-slide(content)
 }
 
+#let center-vertically(height: 1fr, it) = block(
+  height: height,
+  {
+    v(1fr)
+    it
+    v(1fr)
+  },
+)
+
 #let identity(x) = x
 #let centered(it) = align(center, block(align(left, it)))
 #let example(code, columns: (1fr, 1fr), show-output: identity) = {
@@ -42,7 +48,7 @@
   grid(
     columns: columns,
     gutter: 1em,
-    raw(lang: "typ", code.text),
+    raw(lang: "typ", block: true, code.text),
     rect(
       fill: gray.lighten(50%),
       radius: 2.5mm,
@@ -349,27 +355,56 @@
 
 #new-section-slide[Typst Advanced]
 
-#slide(title: [Functions])[
-  #example(```typ
-  To go to scripting mode, type `#` and *some function name* after that. We will start with _something dull_:
+#slide(title: [Scripting Mode])[
+  #v(-1em)
+  Typst is a programming language!
 
-  #lorem(5)
+  You can assign variables, define functions, work with lists or dictionaries, use loops...
+
+  To differentiate code and content, Typst has a separate _scripting mode_.
+
+  #center-vertically(
+    example(```typ
+    To enter scripting mode, use the `#` symbol.
+
+    // This is regular content
+    lorem(5)
+
+    // This is a function call
+    #lorem(5)
+    ```),
+  )
+]
+
+#slide(title: [Code and Content Blocks])[
+  #example(```typ
+  #{
+    let radius = 2
+
+    let circumference(radius) = {
+      2 * calc.pi * radius
+    }
+
+    let result = circumference(radius)
+
+    [Result: #result]
+  }
   ```)
 ]
 
-#slide(title: [Content])[
-  #example(```typ
-  The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
+// #slide(title: [Content])[
+//   #example(```typ
+//   The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
 
-  #[
-    But you can explicitly create it
-    with _scripting mode_.
+//   #[
+//     But you can explicitly create it
+//     with _scripting mode_.
 
-    In square brackets, you can use
-    any markup functions.
-  ]
-  ```)
-]
+//     In square brackets, you can use
+//     any markup functions.
+//   ]
+//   ```)
+// ]
 
 #slide(title: [Arguments])[
   #example(```typ
