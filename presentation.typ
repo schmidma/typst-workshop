@@ -22,7 +22,11 @@
 
 #show link: underline
 
-#set text(font: "Hanken Grotesk", size: 20pt)
+#set text(
+  font: ("Hanken Grotesk", "Noto Color Emoji"),
+  fallback: false,
+  size: 20pt,
+)
 
 #let new-section-slide(name) = {
   let content = {
@@ -494,7 +498,9 @@
 
       #v(0.5em)
 
-      Click "Create Project in app"
+      #block(inset: (left: 1em))[
+        Click "Create Project in app"
+      ]
 
       #v(0.5em)
 
@@ -502,9 +508,11 @@
 
       #v(0.5em)
 
-      ```bash
-      typst init @preview/charged-ieee:0.1.3
-      ```
+      #block(inset: (left: 1em))[
+        ```bash
+        typst init @preview/charged-ieee:0.1.3
+        ```
+      ]
     ],
     [
       #image("./assets/poster_drop-shadowed.png", height: 110%)
@@ -581,8 +589,9 @@
           $qty("1.3+1.2-0.3e3", "erg/cm^2/s", space: "#h(2mm)")$
         ]
         === Symbols
+        #v(1.5em)
         #block(inset: (left: 1em))[
-          🖂 #sym.arrow.r #sym.gt.eq #emoji.face.halo
+          #sym.arrow.r #sym.gt.eq #emoji.face.halo
         ]
       ],
       [
