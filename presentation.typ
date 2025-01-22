@@ -220,9 +220,10 @@
   #set text(size: 20pt)
   #set align(top)
   #show heading: set block(below: 1em)
+  #v(-1em)
   #table(
     columns: (2fr, 3fr),
-    inset: (x: 1.4em, y: 1em),
+    inset: (x: 1.4em, y: 1.3em),
     stroke: (x, y) => (
       left: if x > 0 { 0.8pt + white },
       top: if y > 0 { 0.8pt + white },
