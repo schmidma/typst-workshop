@@ -12,7 +12,7 @@
     query(<custom-footnote>)
       .filter(it => it.location().page() == current-page)
       .map(md => md.value)
-      .join([\n])
+      .join(linebreak())
   },
 )
 
