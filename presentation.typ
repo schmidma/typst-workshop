@@ -333,16 +333,16 @@
     [
       #set align(left)
       - Headers
-      - italic/bold
-      - code (raw)
-      - smart quotes
+      - Italic/Bold
+      - Code (`raw`)
+      - Smart Quotes
     ],
     [
       #set align(left)
-      - newlines
-      - lists
-      - enumerations
-      - maths
+      - Newlines
+      - Lists
+      - Enumerations
+      - Math
     ],
   )
 ]
