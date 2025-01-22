@@ -445,29 +445,72 @@
 #slide(title: [Set Rules])[
   #example(```typ
     Hello!
-    #set text(size: 20pt)
-    Hello!
+
     #set text(font: "DejaVu Sans Mono")
     Hello!
-  ).
 
-  #quote(
-    block: true,
-    attribution: "GitHub Copilot",
-    [
-      The documentation is a great
-      resource for learning Typst.
+    #[
+      #set text(fill: red)
+      Hello!
     ]
-  )
+
+    #set text(size: 10pt)
+    Hello!
   ```)
 ]
 
-#slide(title: [show rules])[
-  Hello
+#slide(title: [Show Rules])[
+  #example(```typ
+    https://typst.app
+
+    #show link: strong
+    https://typst.app
+
+    #show link: set text(fill: red)
+    https://typst.app
+
+    #show "km2": $"km"^2$
+    200km2
+  ```)
 ]
 
-#slide(title: [templates])[
-  Hello
+#slide(title: [Typst Universe])[
+  #align(
+    center + horizon,
+    image("./assets/universe_drop-shadowed.png", height: 120%),
+  )
+  #custom-footnote[Image: screenshot of https://typst.app/universe/search/?kind=templates]
+]
+
+#slide(title: [Templates])[
+  #set align(center)
+  #grid(
+    columns: 2,
+    gutter: 3em,
+    [
+      #set align(left)
+
+      == WebApp
+
+      #v(0.5em)
+
+      Click "Create Project in app"
+
+      #v(0.5em)
+
+      == Local
+
+      #v(0.5em)
+
+      ```bash
+      typst init @preview/charged-ieee:0.1.3
+      ```
+    ],
+    [
+      #image("./assets/poster_drop-shadowed.png", height: 110%)
+      #custom-footnote[Image: https://collaborating.tuhh.de/es/ce/public/tuhh-typst]
+    ],
+  )
 ]
 
 #slide(title: [Figures, Captions, and References])[
