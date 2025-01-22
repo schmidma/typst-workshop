@@ -9,13 +9,18 @@
   footer: context {
     let current-page = here().page()
     set text(size: 12pt)
-    query(<custom-footnote>).filter(it => it.location().page() == current-page).map(md => md.value).join(linebreak())
+    query(<custom-footnote>)
+      .filter(it => it.location().page() == current-page)
+      .map(md => md.value)
+      .join(linebreak())
   },
 )
 
 #let custom-footnote(it) = [
   #metadata(it) <custom-footnote>
 ]
+
+#show link: underline
 
 #set text(font: "Hanken Grotesk", size: 20pt)
 
@@ -357,18 +362,19 @@
 
 #slide(title: [Scripting Mode])[
   #v(-1em)
-  Typst is a programming language!
+  *Typst is a programming language!*
 
-  You can assign variables, define functions, work with lists or dictionaries, use loops...
+  You can assign variables, define functions, work with lists or dictionaries, use loops ...
 
   To differentiate code and content, Typst has a separate _scripting mode_.
 
   #center-vertically(
     example(```typ
-    To enter scripting mode, use the `#` symbol.
-
     // This is regular content
-    lorem(5)
+    Hello World!
+
+    // This is math
+    $a^2 + b^2 = c^2$
 
     // This is a function call
     #lorem(5)
@@ -392,34 +398,76 @@
   ```)
 ]
 
-// #slide(title: [Content])[
-//   #example(```typ
-//   The most "universal" type in Typst language is *content*. Everything you write in the document becomes content.
-
-//   #[
-//     But you can explicitly create it
-//     with _scripting mode_.
-
-//     In square brackets, you can use
-//     any markup functions.
-//   ]
-//   ```)
-// ]
-
 #slide(title: [Arguments])[
   #example(```typ
-  You find the documentation in the #link("https://typst.app/docs/reference/", [Official Reference]).
+  Find the documentation here: #link(
+    "https://typst.app/docs/reference/",
+    [Official Reference]
+  ).
 
   #quote(
     block: true,
-    attribution: "Typst Examples Book",
+    attribution: "GitHub Copilot",
     [
-    That's right, links, quotes and
-    lots of other document elements are
-    created with functions.
+      The documentation is a great
+      resource for learning Typst.
     ]
   )
   ```)
+]
+
+#focus-slide[
+  = Script it yourself!
+
+  #v(2em)
+
+  #set text(size: 24pt)
+  #grid(
+    columns: 2,
+    gutter: 4em,
+    [
+      #set align(left)
+      - Content Mode
+      - Math Mode
+      - Script Mode
+    ],
+    [
+      #set align(left)
+      - Code Blocks
+      - Functions
+      - Arguments
+    ],
+  )
+]
+
+#new-section-slide[Build your own Paper]
+
+#slide(title: [Set Rules])[
+  #example(```typ
+    Hello!
+    #set text(size: 20pt)
+    Hello!
+    #set text(font: "DejaVu Sans Mono")
+    Hello!
+  ).
+
+  #quote(
+    block: true,
+    attribution: "GitHub Copilot",
+    [
+      The documentation is a great
+      resource for learning Typst.
+    ]
+  )
+  ```)
+]
+
+#slide(title: [show rules])[
+  Hello
+]
+
+#slide(title: [templates])[
+  Hello
 ]
 
 #slide(title: [Figures, Captions, and References])[

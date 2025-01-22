@@ -12,12 +12,12 @@
   - [x] markup
   - [x] math
   - [x] action slide
-- [ ] advanced
-  - [ ] content vs. script mode
-  - [ ] functions, arguments
-  - [ ] scripting: typst is a programming language!
-  - [ ] action slide
-- [ ] Build your own paper
+- [x] advanced
+  - [x] scripting: typst is a programming language!
+  - [x] content vs. script mode
+  - [x] functions, arguments
+  - [x] action slide
+- [x] Build your own paper
   - [ ] set rules
     - [ ] font size, family, etc.
   - [ ] show rules
