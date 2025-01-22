@@ -321,6 +321,32 @@
   ```)
 ]
 
+#focus-slide[
+  = Test it yourself!
+
+  #v(2em)
+
+  #set text(size: 24pt)
+  #grid(
+    columns: 2,
+    gutter: 4em,
+    [
+      #set align(left)
+      - Headers
+      - italic/bold
+      - code (raw)
+      - smart quotes
+    ],
+    [
+      #set align(left)
+      - newlines
+      - lists
+      - enumerations
+      - maths
+    ],
+  )
+]
+
 #new-section-slide[Typst Advanced]
 
 #slide(title: [Functions])[
