@@ -63,7 +63,7 @@
 )
 
 #slide(title: [Outline])[
-  #metropolis-outline
+  #h(2em)#box[#metropolis-outline]
 ]
 
 #new-section-slide[What is Typst?]
