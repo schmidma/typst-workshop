@@ -154,6 +154,7 @@
 
 #slide(title: [Why use Typst?])[
   Why should I use typst instead of
+  #set list(indent: 1em)
 
   #block(inset: (left: 2em))[
     Word:
@@ -188,6 +189,8 @@
 ]
 
 #slide(title: [Using the Command Line Interface])[
+  #set block(above: 1em, below: 1em)
+  #v(-1em)
   - Download the latest release from GitHub, and update with
   ```sh
         typst update
@@ -197,13 +200,16 @@
   ```sh
         brew install typst
   ```
+  ```sh
+        winget install --id Typst.Typst
+  ```
 
   - With a Rust toolchain:
   ```sh
         cargo install --locked typst-cli
   ```
 
-  #v(1em)
+  #v(1.5em)
   and then use
   ```sh
         typst watch document.typ
@@ -211,7 +217,7 @@
 ]
 
 #slide(title: [How can it be free?])[
-  #v(0.5em)
+  #v(1em)
 
   - it is Open Source, and it will stay that way
   - WebApp has subscription plans with additional features
