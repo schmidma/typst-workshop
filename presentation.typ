@@ -23,8 +23,7 @@
 #show link: underline
 
 #set text(
-  font: ("Hanken Grotesk", "Noto Color Emoji"),
-  fallback: false,
+  font: "Hanken Grotesk",
   size: 20pt,
 )
 
@@ -153,7 +152,7 @@
 ]
 
 
-#slide(title: [Why Typst?])[
+#slide(title: [Why use Typst?])[
   Why should I use typst instead of
 
   #block(inset: (left: 2em))[
