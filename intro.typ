@@ -65,6 +65,7 @@
   let content = {
     set text(fill: rgb("#23373b"))
     set align(horizon)
+    set page(footer: none)
     block(width: 100%, inset: 2em, {
       text(size: 1.3em, strong(title))
       if subtitle != none {
@@ -99,6 +100,35 @@
   = Outline
 
   #h(2em)#box[#metropolis.outline]
+
+  #h(1cm)
+
+  == #emoji.checkmark.box What we will do
+
+  Exchange about Typst, its features, and how to use it, templates, and best practices.
+
+  == #emoji.crossmark.box What we won't do
+
+  Introduction on how to use Typst in detail (but you may discuss in the round tables).
+]
+
+#slide[
+  = Motivation
+
+  #align(center, grid(
+    columns: (1fr, 1fr),
+    inset: 0.5em,
+    image("assets/overleaf.png"), image("assets/waiting.jpg", width: 90%),
+  ))
+
+  #custom-footnote[Image: https://www.kapwing.com/explore/mr-bean-waiting-meme-template]
+]
+
+#slide[
+  = Motivation
+
+  // #set align(center + horizon)
+  #align(center + horizon, image("assets/ag3elf.jpg"))
 ]
 
 #metropolis.new-section[What is Typst?]
@@ -268,4 +298,12 @@
 
 #slide[
   = Round Tables
+
+  Discuss experiences with Typst, ask questions, and share tips and tricks with fellow users.
+
+  == Suggested topics
+  - Getting started with Typst (Maxi)
+  - Coding in Typst: Macros, Functions, and Conditionals (Rasmus)
+  - Designing Templates in Typst (Til)
+  - Custom Corporate Designs & Continuous Integration (Swantje)
 ]
