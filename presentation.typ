@@ -37,12 +37,11 @@
 #let identity(x) = x
 #let centered(it) = align(center, block(align(left, it)))
 #let example(code, columns: (1fr, 1fr), show-output: identity) = {
-  show grid.cell: centered
   grid(
     columns: columns,
     gutter: 1em,
-    raw(lang: "typ", block: true, code.text),
-    rect(
+    centered(raw(lang: "typ", block: true, code.text)),
+    centered(rect(
       fill: gray.lighten(50%),
       radius: 2.5mm,
       inset: 2.5mm,
@@ -51,7 +50,7 @@
         inset: 7.5mm,
         show-output(eval(code.text, mode: "markup")),
       ),
-    ),
+    )),
   )
 }
 
