@@ -1,11 +1,14 @@
-#import "@preview/polylux:0.3.1": *
-#import "@preview/cetz:0.3.1"
-#import "@preview/unify:0.6.0": num, qty, numrange, qtyrange
-#import "@preview/ccicons:1.0.0": *
+#import "@preview/polylux:0.4.0": *
+#import "@preview/cetz:0.4.2"
+#import "@preview/unify:0.7.1": num, numrange, qty, qtyrange
+#import "@preview/ccicons:1.0.1": *
+#import "@preview/metropolis-polylux:0.1.0" as metropolis
 
-#import themes.metropolis: *
-
-#show: metropolis-theme.with(
+#show: metropolis.setup.with(
+  text-font: "Hanken Grotesk",
+  text-size: 20pt,
+  code-font: "DejaVu Sans Mono",
+  math-font: "New Computer Modern Math",
   footer: context {
     let current-page = here().page()
     set text(size: 12pt)
@@ -21,24 +24,6 @@
 ]
 
 #show link: underline
-
-#set text(
-  font: "Hanken Grotesk",
-  size: 20pt,
-)
-
-#let new-section-slide(name) = {
-  let content = {
-    utils.register-section(name)
-    set align(horizon)
-    show: pad.with(20%)
-    set text(size: 1.5em)
-    name
-    v(0.5em)
-    block(height: 2pt, width: 100%, spacing: 0pt, m-progress-bar)
-  }
-  logic.polylux-slide(content)
-}
 
 #let center-vertically(height: 1fr, it) = block(
   height: height,
@@ -70,53 +55,92 @@
   )
 }
 
+#let title-slide(
+  title: [],
+  subtitle: none,
+  author: none,
+  date: none,
+  extra: none,
+) = {
+  let content = {
+    set text(fill: rgb("#23373b"))
+    set align(horizon)
+    block(width: 100%, inset: 2em, {
+      text(size: 1.3em, strong(title))
+      if subtitle != none {
+        linebreak()
+        text(size: 0.9em, subtitle)
+      }
+      line(length: 100%, stroke: .05em + rgb("#eb811b"))
+      set text(size: .8em)
+      if author != none {
+        block(spacing: 1em, author)
+      }
+      if date != none {
+        block(spacing: 1em, date)
+      }
+      set text(size: .8em)
+      if extra != none {
+        block(spacing: 1em, extra)
+      }
+    })
+  }
+
+  slide(content)
+}
+
 #title-slide(
   title: [Typst],
   subtitle: [The Modern Alternative to LaTeX #cc #cc-zero],
   author: [Maximilian Schmidt],
 )
 
-#slide(title: [Outline])[
-  #h(2em)#box[#metropolis-outline]
+#slide[
+  = Outline
+
+  #h(2em)#box[#metropolis.outline]
 ]
 
-#new-section-slide[What is Typst?]
+#metropolis.new-section[What is Typst?]
 
-#slide(title: [What is Typst?])[
-  #set align(center + horizon)
+#slide[
+  = What is Typst?
+
   #align(center)[
     "Typst is a new markup-based typesetting system for the sciences."
-  ]
-  #v(2em)
+    #v(2em)
 
-  #grid(
-    columns: 2,
-    gutter: 2em,
-    align(
-      center + horizon,
-      {
-        block(
-          clip: true,
-          radius: 10pt,
-          width: 7em,
-          image("./assets/typst_logo.png"),
-        )
-        custom-footnote[Logo: https://avatars.githubusercontent.com/u/67595261?s=200&v=4]
-      },
-    ),
-    [
-      #set align(left)
-      - /taɪpst/ i.e. 'Ty' like in Typesetting
-      - alternative to LaTeX, Word, or Google Docs
-      - built to be a pleasure to use
-      - powerful and easy to learn
-      - blazingly fast compile times
-      - free and Open Source (Apache 2.0)
-    ],
-  )
+    #grid(
+      columns: 2,
+      gutter: 2em,
+      align(
+        center + horizon,
+        {
+          block(
+            clip: true,
+            radius: 10pt,
+            width: 7em,
+            image("./assets/typst_logo.png"),
+          )
+          custom-footnote[Logo: https://avatars.githubusercontent.com/u/67595261?s=200&v=4]
+        },
+      ),
+      [
+        #set align(left)
+        - /taɪpst/ i.e. 'Ty' like in Typesetting
+        - alternative to LaTeX, Word, or Google Docs
+        - built to be a pleasure to use
+        - powerful and easy to learn
+        - blazingly fast compile times
+        - free and Open Source (Apache 2.0)
+      ],
+    )
+  ]
 ]
 
-#slide(title: [When to use Typst?])[
+#slide[
+  = When to use Typst?
+
   #grid(
     columns: (1.5fr, 2fr),
     align(
@@ -126,7 +150,6 @@
           center + horizon,
           image(
             "./assets/towards-swifter-interstellar-mail-delivery_drop-shadowed.png",
-            height: 110%,
           ),
         )
         custom-footnote[Image: https://typst.app/assets/images/ieee.webp]
@@ -152,7 +175,9 @@
 ]
 
 
-#slide(title: [Why use Typst?])[
+#slide[
+  = Why use Typst?
+
   Why should I use typst instead of
   #set list(indent: 1em)
 
@@ -169,9 +194,11 @@
   ]
 ]
 
-#new-section-slide[How to use Typst?]
+#metropolis.new-section[How to use Typst?]
 
-#slide(title: [Using the Web App])[
+#slide[
+  = Using the Web App
+
   #figure(
     {
       image("./assets/web-app.png")
@@ -182,13 +209,17 @@
   )
 ]
 
-#slide(title: [Using Tinymist in VSCode])[
+#slide[
+  = Using Tinymist in VSCode
+
   #set align(center)
-  #image("./assets/vscode.png", height: 120%)
+  #image("./assets/vscode.png")
   #custom-footnote[Image: screenshot]
 ]
 
-#slide(title: [Using the Command Line Interface])[
+#slide[
+  = Using the Command Line Interface
+
   #set block(above: 1em, below: 1em)
   #v(-1em)
   - Download the latest release from GitHub, and update with
@@ -216,7 +247,9 @@
   ```
 ]
 
-#slide(title: [How can it be free?])[
+#slide[
+  = How can it be free?
+
   #v(1em)
 
   - it is Open Source, and it will stay that way
@@ -227,13 +260,16 @@
   #v(0.5em)
 
   #align(
-    center + bottom,
+    center,
     image("./assets/typst-pro-transparent.png", height: 8em),
   )
   #custom-footnote[Image: screenshot of https://typst.app/pricing/]
 ]
 
-#focus-slide[
+#slide[
+  #show: metropolis.focus
+
+  #v(-0.5em)
   #set text(size: 50pt)
   Installation and Setup
 
@@ -278,22 +314,28 @@
   )
 ]
 
-#new-section-slide[Typst Basics]
+#metropolis.new-section[Typst Basics]
 
-#slide(title: [Typst Basics])[
+#slide[
+  = Typst Basics
+
   #example(```typ
   When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
   ```)
 ]
 
-#slide(title: [Headers])[
+#slide[
+  = Headers
+
   #example(```typ
   = Introduction
   When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
   ```)
 ]
 
-#slide(title: [Markup])[
+#slide[
+  = Markup
+
   #example(```typ
   Okay, let's move to _emphasis_ and *bold* text.
   Markup syntax is generally similar to `AsciiDoc` (this was `raw` for monospace text!)
@@ -302,7 +344,9 @@
   ```)
 ]
 
-#slide(title: [Newlines])[
+#slide[
+  = Newlines
+
   #example(```typ
   You can break \
   lines anywhere you \
@@ -310,7 +354,9 @@
   ```)
 ]
 
-#slide(title: [Lists])[
+#slide[
+  = Lists
+
   #example(```typ
   + First
   + Second
@@ -325,13 +371,17 @@
   ```)
 ]
 
-#slide(title: [Mathematical Expressions])[
+#slide[
+  = Mathematical Expressions
+
   #example(```typ
   $Q = rho A v + C / 2$
   ```)
 ]
 
-#slide(title: [Mathematical Expressions])[
+#slide[
+  = Mathematical Expressions
+
   #example(```typ
   $
     7.32 beta +
@@ -341,10 +391,12 @@
   ```)
 ]
 
-#focus-slide[
-  = Test it yourself!
+#slide[
+  #show: metropolis.focus
 
-  #v(2em)
+  #text(size: 48pt, weight: "bold")[
+    Test it yourself!
+  ]
 
   #set text(size: 24pt)
   #grid(
@@ -367,10 +419,11 @@
   )
 ]
 
-#new-section-slide[Typst Advanced]
+#metropolis.new-section[Typst Advanced]
 
-#slide(title: [Scripting Mode])[
-  #v(-1em)
+#slide[
+  = Scripting Mode
+
   *Typst is a programming language!*
 
   You can assign variables, define functions, work with lists or dictionaries, use loops ...
@@ -391,7 +444,9 @@
   )
 ]
 
-#slide(title: [Code and Content Blocks])[
+#slide[
+  = Code and Content Blocks
+
   #example(```typ
   #{
     let radius = 2
@@ -407,7 +462,9 @@
   ```)
 ]
 
-#slide(title: [Arguments])[
+#slide[
+  = Arguments
+
   #example(```typ
   Find the documentation here: #link(
     "https://typst.app/docs/reference/",
@@ -425,10 +482,12 @@
   ```)
 ]
 
-#focus-slide[
-  = Script it yourself!
+#slide[
+  #show: metropolis.focus
 
-  #v(2em)
+  #text(size: 48pt, weight: "bold")[
+    Script it yourself!
+  ]
 
   #set text(size: 24pt)
   #grid(
@@ -449,9 +508,11 @@
   )
 ]
 
-#new-section-slide[Build your own Paper]
+#metropolis.new-section[Build your own Paper]
 
-#slide(title: [Set Rules])[
+#slide[
+  = Set Rules
+
   #example(```typ
     Hello!
 
@@ -468,7 +529,9 @@
   ```)
 ]
 
-#slide(title: [Show Rules])[
+#slide[
+  = Show Rules
+
   #example(```typ
     https://typst.app
 
@@ -483,15 +546,19 @@
   ```)
 ]
 
-#slide(title: [Typst Universe])[
+#slide[
+  = Typst Universe
+
   #align(
     center + horizon,
-    image("./assets/universe_drop-shadowed.png", height: 120%),
+    image("./assets/universe_drop-shadowed.png"),
   )
   #custom-footnote[Image: screenshot of https://typst.app/universe/search/?kind=templates]
 ]
 
-#slide(title: [Templates])[
+#slide[
+  = Templates
+
   #set align(center)
   #grid(
     columns: 2,
@@ -520,13 +587,15 @@
       ]
     ],
     [
-      #image("./assets/poster_drop-shadowed.png", height: 110%)
+      #image("./assets/poster_drop-shadowed.png")
       #custom-footnote[Image: https://collaborating.tuhh.de/es/ce/public/tuhh-typst]
     ],
   )
 ]
 
-#slide(title: [Figures, Captions, and References])[
+#slide[
+  = Figures, Captions, and References
+
   #example(```typ
   Rivers as shown in @rivers are an important part of the earth's climate system.
 
@@ -542,7 +611,9 @@
   ```)
 ]
 
-#slide(title: [Bibliography])[
+#slide[
+  = Bibliography
+
   #example(
     show-output: it => {
       set text(size: 12pt)
@@ -556,7 +627,9 @@
   )
 ]
 
-#slide(title: [... and so much more])[
+#slide[
+  = ... and so much more
+
   #block(
     breakable: false,
     grid(
@@ -569,11 +642,7 @@
             columns: (auto, auto, auto),
             inset: 10pt,
             align: horizon,
-            table.header(
-              [],
-              [*Area*],
-              [*Parameters*],
-            ),
+            table.header([], [*Area*], [*Parameters*]),
 
             [🚗],
             $ pi h (D^2 - d^2) / 4 $,
@@ -622,7 +691,12 @@
                 content: (padding: 1pt),
               )
 
-              grid((-1.5, -1.5), (1.4, 1.4), step: 0.5, stroke: gray + 0.2pt)
+              grid(
+                (-1.5, -1.5),
+                (1.4, 1.4),
+                step: 0.5,
+                stroke: gray + 0.2pt,
+              )
 
               circle((0, 0), radius: 1)
 
@@ -699,7 +773,11 @@
             )
             scale(x: 1, z: -0.666)
 
-            grid((0, -2), (8, 2), stroke: gray + .5pt)
+            grid(
+              (0, -2),
+              (8, 2),
+              stroke: gray + .5pt,
+            )
 
             // Draw a sine wave on the xy plane
             let wave(
@@ -745,7 +823,9 @@
   )
 ]
 
-#slide(title: [Useful Links])[
+#slide[
+  = Useful Links
+
   #block(breakable: false)[
     https://typst.app
 
@@ -767,6 +847,9 @@
   ]
 ]
 
-#focus-slide[
+#slide[
+  #show: metropolis.focus
+
+  #set text(weight: "bold")
   Feedback, Questions, and Ideas for Improvement?
 ]
