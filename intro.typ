@@ -242,9 +242,10 @@
 #slide[
   = Using Tinymist in VSCode
 
-  #set align(center)
-  #image("./assets/vscode.png")
-  #custom-footnote[Image: screenshot]
+  #align(center)[
+    #image("./assets/vscode.png")
+    #custom-footnote[Image: screenshot]
+  ]
 ]
 
 #slide[
