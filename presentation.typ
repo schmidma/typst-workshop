@@ -12,7 +12,10 @@
   footer: context {
     let current-page = here().page()
     set text(size: 12pt)
-    query(<custom-footnote>).filter(it => it.location().page() == current-page).map(md => md.value).join(linebreak())
+    query(<custom-footnote>)
+      .filter(it => it.location().page() == current-page)
+      .map(md => md.value)
+      .join(linebreak())
   },
 )
 
