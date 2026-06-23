@@ -303,6 +303,8 @@
 ]
 
 #slide(title: [Headings])[
+  #show heading.where(level: 1): it => heading(level: 3, it.body)
+
   #example(```typ
   = Introduction
   When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
