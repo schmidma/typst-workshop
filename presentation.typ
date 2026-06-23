@@ -248,7 +248,7 @@
 #focus-slide[
   #set page(margin: 1cm)
   #set text(size: 40pt)
-  Installation and Setup
+  *Installation and Setup*
 
   #set text(size: 20pt)
   #show heading: set block(below: 1em)
@@ -353,9 +353,7 @@
 ]
 
 #focus-slide[
-  = Test it yourself!
-
-  #v(2em)
+  *Test it yourself!*
 
   #set text(size: 24pt)
   #grid(
@@ -437,7 +435,7 @@
 ]
 
 #focus-slide[
-  Script it yourself!
+  *Script it yourself!*
 
   #set text(size: 24pt)
   #grid(
