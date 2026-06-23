@@ -1,11 +1,14 @@
-#import "@preview/polylux:0.3.1": *
-#import "@preview/cetz:0.3.1"
-#import "@preview/unify:0.6.0": num, qty, numrange, qtyrange
-#import "@preview/ccicons:1.0.0": *
+#import "@preview/polylux:0.4.0" as polylux
+#import "@preview/metropolis-polylux:0.1.0" as metropolis
+#import "@preview/cetz:0.5.2"
+#import "@preview/unify:0.8.1": num, qty, numrange, qtyrange
+#import "@preview/ccicons:1.0.1": *
 
-#import themes.metropolis: *
-
-#show: metropolis-theme.with(
+#show: metropolis.setup.with(
+  text-font: "Hanken Grotesk",
+  math-font: "New Computer Modern Math",
+  code-font: "DejaVu Sans Mono",
+  text-size: 20pt,
   footer: context {
     let current-page = here().page()
     set text(size: 12pt)
@@ -16,29 +19,53 @@
   },
 )
 
+#let slide(title: none, body) = polylux.slide({
+  if title != none {
+    heading(level: 1, title)
+  }
+  body
+})
+
+#let title-slide(
+  title: [],
+  subtitle: none,
+  author: none,
+  date: none,
+  extra: none,
+) = polylux.slide({
+  set page(header: none, footer: none, margin: 3em)
+  set align(horizon)
+
+  text(size: 1.3em, strong(title))
+  if subtitle != none {
+    linebreak()
+    subtitle
+  }
+  metropolis.divider
+  set text(size: .8em)
+  if author != none {
+    block(spacing: 1em, author)
+  }
+  if date != none {
+    block(spacing: 1em, date)
+  }
+  if extra != none {
+    block(spacing: 1em, extra)
+  }
+})
+
+#let new-section-slide = metropolis.new-section
+#let focus-slide(body) = polylux.slide({
+  show: metropolis.focus
+  body
+})
+#let metropolis-outline = metropolis.outline
+
 #let custom-footnote(it) = [
   #metadata(it) <custom-footnote>
 ]
 
 #show link: underline
-
-#set text(
-  font: "Hanken Grotesk",
-  size: 20pt,
-)
-
-#let new-section-slide(name) = {
-  let content = {
-    utils.register-section(name)
-    set align(horizon)
-    show: pad.with(20%)
-    set text(size: 1.5em)
-    name
-    v(0.5em)
-    block(height: 2pt, width: 100%, spacing: 0pt, m-progress-bar)
-  }
-  logic.polylux-slide(content)
-}
 
 #let center-vertically(height: 1fr, it) = block(
   height: height,
