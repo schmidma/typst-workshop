@@ -16,6 +16,8 @@
   },
 )
 
+#show emph: it => text(style: "italic", it.body)
+
 #let slide(title: none, body) = polylux.slide({
   if title != none {
     heading(level: 1, title)
