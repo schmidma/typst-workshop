@@ -1,7 +1,7 @@
 #import "@preview/polylux:0.4.0" as polylux
 #import "@preview/metropolis-polylux:0.1.0" as metropolis
 #import "@preview/cetz:0.5.2"
-#import "@preview/unify:0.8.1": num, qty, numrange, qtyrange
+#import "@preview/unify:0.8.1": num, numrange, qty, qtyrange
 #import "@preview/ccicons:1.0.1": *
 
 #show: metropolis.setup.with(
@@ -12,10 +12,7 @@
   footer: context {
     let current-page = here().page()
     set text(size: 12pt)
-    query(<custom-footnote>)
-      .filter(it => it.location().page() == current-page)
-      .map(md => md.value)
-      .join(linebreak())
+    query(<custom-footnote>).filter(it => it.location().page() == current-page).map(md => md.value).join(linebreak())
   },
 )
 
@@ -67,15 +64,6 @@
 
 #show link: underline
 
-#let center-vertically(height: 1fr, it) = block(
-  height: height,
-  {
-    v(1fr)
-    it
-    v(1fr)
-  },
-)
-
 #let identity(x) = x
 #let centered(it) = align(center, block(align(left, it)))
 #let example(code, columns: (1fr, 1fr), show-output: identity) = {
@@ -100,7 +88,7 @@
 #title-slide(
   title: [Typst],
   subtitle: [The Modern Alternative to LaTeX #cc #cc-zero],
-  author: [Maximilian Schmidt],
+  author: [Maximilian Schmidt, Rasmus Mecklenburg],
 )
 
 #slide(title: [Outline])[
@@ -153,7 +141,6 @@
           center + horizon,
           image(
             "./assets/towards-swifter-interstellar-mail-delivery_drop-shadowed.png",
-            height: 110%,
           ),
         )
         custom-footnote[Image: https://typst.app/assets/images/ieee.webp]
@@ -212,7 +199,7 @@
 
 #slide(title: [Using Tinymist in VSCode])[
   #set align(center)
-  #image("./assets/vscode.png", height: 120%)
+  #image("./assets/vscode.png")
   #custom-footnote[Image: screenshot]
 ]
 
@@ -249,25 +236,23 @@
   - Typst On-Premises: self-hosted version for organizations
   - commercial support contracts
 
-  #v(0.5em)
-
   #align(
     center + bottom,
     image("./assets/typst-pro-transparent.png", height: 8em),
   )
+  #v(0.5em)
   #custom-footnote[Image: screenshot of https://typst.app/pricing/]
 ]
 
 #focus-slide[
-  #set text(size: 50pt)
+  #set page(margin: 1cm)
+  #set text(size: 40pt)
   Installation and Setup
 
   #set text(size: 20pt)
-  #set align(top)
   #show heading: set block(below: 1em)
-  #v(-1em)
   #table(
-    columns: (2fr, 3fr),
+    columns: 2,
     inset: (x: 1.4em, y: 1.3em),
     stroke: (x, y) => (
       left: if x > 0 { 0.8pt + white },
@@ -402,18 +387,18 @@
 
   To differentiate code and content, Typst has a separate _code mode_ for scripting.
 
-  #center-vertically(
-    example(```typ
-    // This is regular content
-    Hello World!
+  #v(1cm)
 
-    // This is math
-    $a^2 + b^2 = c^2$
+  #example(```typ
+  // This is regular content
+  Hello World!
 
-    // This is a function call
-    #lorem(5)
-    ```),
-  )
+  // This is math
+  $a^2 + b^2 = c^2$
+
+  // This is a function call
+  #lorem(5)
+  ```)
 ]
 
 #slide(title: [Code and Content Blocks])[
@@ -451,9 +436,7 @@
 ]
 
 #focus-slide[
-  = Script it yourself!
-
-  #v(2em)
+  Script it yourself!
 
   #set text(size: 24pt)
   #grid(
@@ -511,7 +494,7 @@
 #slide(title: [Typst Universe])[
   #align(
     center + horizon,
-    image("./assets/universe_drop-shadowed.png", height: 120%),
+    image("./assets/universe_drop-shadowed.png"),
   )
   #custom-footnote[Image: screenshot of https://typst.app/universe/search/?kind=templates]
 ]
@@ -545,7 +528,7 @@
       ]
     ],
     [
-      #image("./assets/poster_drop-shadowed.png", height: 110%)
+      #image("./assets/poster_drop-shadowed.png")
       #custom-footnote[Image: https://collaborating.tuhh.de/es/ce/public/tuhh-typst]
     ],
   )
@@ -594,11 +577,7 @@
             columns: (auto, auto, auto),
             inset: 10pt,
             align: horizon,
-            table.header(
-              [],
-              [*Area*],
-              [*Parameters*],
-            ),
+            table.header([], [*Area*], [*Parameters*]),
 
             [🚗],
             $ pi h (D^2 - d^2) / 4 $,
@@ -647,7 +626,12 @@
                 content: (padding: 1pt),
               )
 
-              grid((-1.5, -1.5), (1.4, 1.4), step: 0.5, stroke: gray + 0.2pt)
+              grid(
+                (-1.5, -1.5),
+                (1.4, 1.4),
+                step: 0.5,
+                stroke: gray + 0.2pt,
+              )
 
               circle((0, 0), radius: 1)
 
@@ -724,7 +708,11 @@
             )
             scale(x: 1, z: -0.666)
 
-            grid((0, -2), (8, 2), stroke: gray + .5pt)
+            grid(
+              (0, -2),
+              (8, 2),
+              stroke: gray + .5pt,
+            )
 
             // Draw a sine wave on the xy plane
             let wave(
