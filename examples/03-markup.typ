@@ -1,4 +1,4 @@
 Okay, let's move to _emphasis_ and *bold* text.
-Markup syntax is generally similar to `AsciiDoc` (this was `raw` for mono space text!)
+Typst uses lightweight markup for common formatting (this was `raw` for monospace text!)
 
 ... and even "smart quotes" :)

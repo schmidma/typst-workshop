@@ -8,7 +8,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Typst
-        uses: typst-community/setup-typst@v3
+        uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.0
       - name: Build PDF
         run: typst compile --font-path .fonts/ --ignore-system-fonts presentation.typ
       - name: Upload PDF file

@@ -1,3 +1,3 @@
 You can break \
-line anywhere you \
+lines anywhere you \
 want using the \\ symbol.

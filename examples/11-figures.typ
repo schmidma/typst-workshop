@@ -2,7 +2,7 @@ Rivers as shown in @rivers are an important part of the earth's climate system.
 
 #figure(
  image(
-   "./assets/rivers.jpg",
+   "/assets/rivers.jpg",
    width: 70%
  ),
  caption: [

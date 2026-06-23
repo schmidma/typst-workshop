@@ -1,7 +1,7 @@
 # Typst: The Modern Alternative to LaTeX
 
 This repository contains a presentation on Typst, a modern, markup-based typesetting system designed to be a powerful and user-friendly alternative to LaTeX, Word, or Google Docs.
-This presentation covers the basics of Typst, including how to use it, why it is advantageous, and advanced features like mathematical typesetting and scripting.
+This presentation covers the basics of Typst, including how to use it, why it is advantageous, and advanced features like mathematical typesetting and code mode.
 
 ## Overview
 
@@ -19,6 +19,31 @@ The presentation is designed for a workshop and includes the following sections:
 - `presentation.typ`: The full presentation in Typst format.
 - `assets/`: Images and resources
 - `examples/`: Sample Typst files used in the presentation.
+- `.fonts/`: Bundled fonts used for reproducible local and CI builds.
+
+## Getting Started
+
+Install a recent Typst release. This workshop was last checked with Typst 0.15.0.
+
+From the repository root, build the presentation with:
+
+```sh
+typst compile presentation.typ --font-path .fonts/ --ignore-system-fonts
+```
+
+If you have `just` installed, you can use the shortcuts:
+
+```sh
+just compile
+just watch
+```
+
+The first build may need internet access to download Typst Universe packages.
+Examples that refer to shared repository files should be compiled from the repository root with `--root .`, for example:
+
+```sh
+typst compile --root . examples/11-figures.typ
+```
 
 ## Feedback
 

@@ -138,7 +138,7 @@
       - built to be a pleasure to use
       - powerful and easy to learn
       - blazingly fast compile times
-      - free and Open Source (Apache 2.0)
+      - free and open-source compiler (Apache-2.0)
     ],
   )
 ]
@@ -172,7 +172,8 @@
           - books
           - presentations
           - ...
-        - takes text files and outputs PDFs
+        - takes `.typ` files and outputs PDFs by default
+        - can also export PNG, SVG, HTML, or bundles
       ],
     ),
   )
@@ -180,7 +181,7 @@
 
 
 #slide(title: [Why use Typst?])[
-  Why should I use typst instead of
+  Why should I use Typst instead of
   #set list(indent: 1em)
 
   #block(inset: (left: 2em))[
@@ -218,12 +219,7 @@
 #slide(title: [Using the Command Line Interface])[
   #set block(above: 1em, below: 1em)
   #v(-1em)
-  - Download the latest release from GitHub, and update with
-  ```sh
-        typst update
-  ```
-
-  - Through package managers:
+  - Download a recent release from GitHub, or install with a package manager:
   ```sh
         brew install typst
   ```
@@ -236,6 +232,8 @@
         cargo install --locked typst-cli
   ```
 
+  - Update through the same channel you used for installation.
+
   #v(1.5em)
   and then use
   ```sh
@@ -246,9 +244,9 @@
 #slide(title: [How can it be free?])[
   #v(1em)
 
-  - it is Open Source, and it will stay that way
-  - WebApp has subscription plans with additional features
-  - typst on-premises: self-hosted version for organizations
+  - compiler and CLI are open source, and will stay that way
+  - Web App has subscription plans with additional features
+  - Typst On-Premises: self-hosted version for organizations
   - commercial support contracts
 
   #v(0.5em)
@@ -276,9 +274,9 @@
       top: if y > 0 { 0.8pt + white },
     ),
     [
-      == WebApp
+      == Web App
 
-      + Sign up and Log in
+      + Sign up and log in
       + Create document
 
       https://typst.app
@@ -289,7 +287,7 @@
         == Local Installation
 
         #set align(left)
-        Install the latest release:
+        Install a recent Typst release:
 
         - download binary from GitHub
         - `brew install typst`
@@ -313,7 +311,7 @@
   ```)
 ]
 
-#slide(title: [Headers])[
+#slide(title: [Headings])[
   #example(```typ
   = Introduction
   When you begin typing words into a document, those words are automatically arranged into a visually coherent form known as typeset text.
@@ -323,7 +321,7 @@
 #slide(title: [Markup])[
   #example(```typ
   Okay, let's move to _emphasis_ and *bold* text.
-  Markup syntax is generally similar to `AsciiDoc` (this was `raw` for monospace text!)
+  Typst uses lightweight markup for common formatting (this was `raw` for monospace text!)
 
   ... and even "smart quotes" :)
   ```)
@@ -379,7 +377,7 @@
     gutter: 4em,
     [
       #set align(left)
-      - Headers
+      - Headings
       - Italic/Bold
       - Code (`raw`)
       - Smart Quotes
@@ -396,13 +394,13 @@
 
 #new-section-slide[Typst Advanced]
 
-#slide(title: [Scripting Mode])[
+#slide(title: [Code Mode])[
   #v(-1em)
   *Typst is a programming language!*
 
   You can assign variables, define functions, work with lists or dictionaries, use loops ...
 
-  To differentiate code and content, Typst has a separate _scripting mode_.
+  To differentiate code and content, Typst has a separate _code mode_ for scripting.
 
   #center-vertically(
     example(```typ
@@ -526,7 +524,7 @@
     [
       #set align(left)
 
-      == WebApp
+      == Web App
 
       #v(0.5em)
 
@@ -542,7 +540,7 @@
 
       #block(inset: (left: 1em))[
         ```bash
-        typst init @preview/charged-ieee:0.1.3
+        typst init @preview/charged-ieee
         ```
       ]
     ],
@@ -576,7 +574,7 @@
       it
     },
     ```typ
-    This is a citation to a paper by @johnson2022ai. Followed by a work of John Smith @smith2023modern.
+    This is a citation to a paper by @johnson2022ai, followed by a work by John Smith @smith2023modern.
 
     #bibliography("literature.yaml")
     ```,
@@ -766,7 +764,7 @@
             wave(amplitude: 1, fill: rgb(255, 0, 0, 50))
           })]
 
-        === ...and much more
+        === ... and much more
       ],
     ),
   )
