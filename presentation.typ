@@ -98,37 +98,38 @@
 #new-section-slide[What is Typst?]
 
 #slide(title: [What is Typst?])[
-  #set align(center + horizon)
   #align(center)[
     "Typst is a new markup-based typesetting system for the sciences."
   ]
   #v(2em)
 
-  #grid(
-    columns: 2,
-    gutter: 2em,
-    align(
-      center + horizon,
-      {
-        block(
-          clip: true,
-          radius: 10pt,
-          width: 7em,
-          image("./assets/typst_logo.png"),
-        )
-        custom-footnote[Logo: https://avatars.githubusercontent.com/u/67595261?s=200&v=4]
-      },
-    ),
-    [
-      #set align(left)
-      - /taɪpst/ i.e. 'Ty' like in Typesetting
-      - alternative to LaTeX, Word, or Google Docs
-      - built to be a pleasure to use
-      - powerful and easy to learn
-      - blazingly fast compile times
-      - free and open-source compiler (Apache-2.0)
-    ],
-  )
+  #align(center + horizon)[
+    #grid(
+      columns: 2,
+      gutter: 2em,
+      align(
+        center + horizon,
+        {
+          block(
+            clip: true,
+            radius: 10pt,
+            width: 7em,
+            image("./assets/typst_logo.png"),
+          )
+          custom-footnote[Logo: https://avatars.githubusercontent.com/u/67595261?s=200&v=4]
+        },
+      ),
+      [
+        #set align(left)
+        - /taɪpst/ i.e. 'Ty' like in Typesetting
+        - alternative to LaTeX, Word, or Google Docs
+        - built to be a pleasure to use
+        - powerful and easy to learn
+        - blazingly fast compile times
+        - free and open-source compiler (Apache-2.0)
+      ],
+    )
+  ]
 ]
 
 #slide(title: [When to use Typst?])[
@@ -198,9 +199,10 @@
 ]
 
 #slide(title: [Using Tinymist in VSCode])[
-  #set align(center)
-  #image("./assets/vscode.png")
-  #custom-footnote[Image: screenshot]
+  #align(center)[
+    #image("./assets/vscode.png")
+    #custom-footnote[Image: screenshot]
+  ]
 ]
 
 #slide(title: [Using the Command Line Interface])[
@@ -500,38 +502,39 @@
 ]
 
 #slide(title: [Templates])[
-  #set align(center)
-  #grid(
-    columns: 2,
-    gutter: 3em,
-    [
-      #set align(left)
+  #align(center)[
+    #grid(
+      columns: 2,
+      gutter: 3em,
+      [
+        #set align(left)
 
-      == Web App
+        == Web App
 
-      #v(0.5em)
+        #v(0.5em)
 
-      #block(inset: (left: 1em))[
-        Click "Create Project in app"
-      ]
+        #block(inset: (left: 1em))[
+          Click "Create Project in app"
+        ]
 
-      #v(0.5em)
+        #v(0.5em)
 
-      == Local
+        == Local
 
-      #v(0.5em)
+        #v(0.5em)
 
-      #block(inset: (left: 1em))[
-        ```bash
-        typst init @preview/charged-ieee
-        ```
-      ]
-    ],
-    [
-      #image("./assets/poster_drop-shadowed.png")
-      #custom-footnote[Image: https://collaborating.tuhh.de/es/ce/public/tuhh-typst]
-    ],
-  )
+        #block(inset: (left: 1em))[
+          ```bash
+          typst init @preview/charged-ieee
+          ```
+        ]
+      ],
+      [
+        #image("./assets/poster_drop-shadowed.png")
+        #custom-footnote[Image: https://collaborating.tuhh.de/es/ce/public/tuhh-typst]
+      ],
+    )
+  ]
 ]
 
 #slide(title: [Figures, Captions, and References])[
