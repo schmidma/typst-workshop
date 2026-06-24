@@ -782,8 +782,6 @@
 
     https://collaborating.tuhh.de/es/ce/public/tuhh-typst
 
-    https://collaborating.tuhh.de/es/ce/public/templatesforreports
-
     https://collaborating.tuhh.de/es/ce/public/ies-typst-phd-thesis-template
   ]
 ]
