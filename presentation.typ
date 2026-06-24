@@ -782,7 +782,7 @@
 
     https://collaborating.tuhh.de/es/ce/public/tuhh-typst
 
-    https://collaborating.tuhh.de/es/ce/public/ies-typst-phd-thesis-template
+    https://collaborating.tuhh.de/e-18/hillebrecht/tuhh-phd
   ]
 ]
 
